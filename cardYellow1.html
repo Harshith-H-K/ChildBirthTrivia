@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Card Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+        }
+        
+        .flashcard {
+            width: 90%;
+            /* Use relative units for width to adapt to different screen sizes */
+            max-width: 700px;
+            /* Limit the maximum width to 700px */
+            height: auto;
+            padding: 20px;
+            background-color: rgb(145, 145, 0);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        #question {
+            font-family: Candara;
+            font-size: 30px;
+            font-weight: bolder;
+        }
+        
+        #answer {
+            margin-top: 20px;
+            color: #000000;
+            font-family: Candara;
+            font-size: 30px;
+            font-weight: bolder;
+        }
+        
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        #timer {
+            position: absolute;
+            color: aquamarine;
+            right: 10px;
+            top: 0px;
+            font-weight: bold;
+            font-family: Candara;
+            font-size: 100px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        #nextBtn {
+            position: absolute;
+            background-color: #fff;
+            color: rgb(0, 0, 0);
+            right: 10px;
+            bottom: 10px;
+            font-family: Candara;
+            font-size: 25px;
+            font-weight: bold;
+            width: 120px;
+            height: 50px;
+        }
+        
+        #backBtn {
+            position: absolute;
+            background-color: #fff;
+            color: rgb(0, 0, 0);
+            left: 10px;
+            top: 0px;
+            font-family: Candara;
+            font-size: 25px;
+            font-weight: bold;
+            width: 120px;
+            height: 50px;
+        }
+        
+        #nextBtn:hover {
+            background-color: aquamarine;
+        }
+        
+        #backBtn:hover {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="flashcard">
+        <h2></h2>
+        <p id="question"></p>
+        <h2></h2>
+        <p id="answer"></p>
+    </div>
+
+    <div id="timer">8</div>
+    <button id="nextBtn" class="hidden">Next</button>
+    <button id="backBtn" class="hidden">Back</button>
+
+    <script>
+        const flashcards = [{
+            question: "In 1972, what was the only out-of-hospital birth center in the U.S.?",
+            answer: "Su Clinica in Raymondville, Texas"
+        }, {
+            question: "What Organization did Marion Tompson help to found in the 1950's?",
+            answer: "La Leche League"
+        }, {
+            question: "In 1975, what percent of all U.S. births were to females 10 to 19 years of age?",
+            answer: "19%"
+        }, {
+            question: "What unlicensed midwife was indicted in California in 1978 on charges of practicing medicine without a license and murder and subsequently cleared?",
+            answer: "Marianne Doshi"
+        }, {
+            question: "What practices against physicians assisting with home births began to come to the forefront in the early 1980's?",
+            answer: "Cancelation of malpractice insurance, refusal to participate in backup, loss of hospital privileges"
+        },
+         ];
+
+        let currentCardIndex = 0;
+        const questionElement = document.getElementById("question");
+        const answerElement = document.getElementById("answer");
+        const nextButton = document.getElementById("nextBtn");
+        const backBtn = document.getElementById("backBtn");
+        const timerElement = document.getElementById("timer");
+        let timerInterval;
+
+        function showQuestion() {
+            questionElement.textContent = flashcards[currentCardIndex].question;
+            answerElement.textContent = flashcards[currentCardIndex].answer;
+            answerElement.classList.add("hidden");
+            nextButton.classList.add("hidden");
+            backBtn.classList.add("hidden");
+        }
+
+        function showAnswerAndStartNextQuestionTimer() {
+            answerElement.classList.remove("hidden");
+            nextButton.classList.remove("hidden");
+            backBtn.classList.remove("hidden");
+            startNextQuestionTimer();
+        }
+
+        function showNextCardAndStartCurrentQuestionTimer() {
+            currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+            showQuestion();
+            startCurrentQuestionTimer();
+        }
+
+        function startCurrentQuestionTimer() {
+            let seconds = 8;
+            timerElement.textContent = seconds;
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                seconds--;
+                timerElement.textContent = seconds;
+                if (seconds === 0) {
+                    clearInterval(timerInterval);
+                    showAnswerAndStartNextQuestionTimer();
+                }
+            }, 1000);
+        }
+
+        function startNextQuestionTimer() {
+            nextButton.removeEventListener("click", showNextCardAndStartCurrentQuestionTimer);
+            if (currentCardIndex === flashcards.length - 1) {
+                nextButton.style.display = "none";
+            } else {
+                nextButton.addEventListener("click", showNextCardAndStartCurrentQuestionTimer);
+            }
+        }
+
+        backBtn.addEventListener("click", () => {
+            window.location.href = "category.html";
+        });
+
+        showQuestion();
+        startCurrentQuestionTimer();
+    </script>
+</body>
+
+</html>

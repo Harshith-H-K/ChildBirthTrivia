@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Candara, Arial, sans-serif;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        h1 {
+            color: aquamarine;
+            font-size: 3rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        h2 {
+            color: aquamarine;
+            font-size: 1.5rem;
+            font-style: italic;
+            text-align: center;
+            text-decoration: underline;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        p {
+            font-size: 1.2rem;
+            text-align: justify;
+            max-width: 800px;
+            margin: 20px;
+            width: 500px;
+        }
+        
+        .button-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .special {
+            height: 10px;
+            width: 10px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: aquamarine;
+            color: #020202;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        button:hover {
+            background-color: #77d9d9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>INSTRUCTIONS</h1>
+        <p>This is a digital version of the physical Child's birth trivia.</p>
+        <h2>The Categories</h2>
+        <p>LEVEL I - Design to introduce information to prospective and new parents.
+        </p>
+        <p>LEVEL II - For childbirth educators, midwives, nurses, and OB's.
+        </p>
+        <p id="special"></p>
+
+        <div class="button-container">
+            <button onclick="redirectToCategoryPage()">PLAY NOW</button>
+        </div>
+        <script>
+            function redirectToCategoryPage() {
+                window.location.href = "category.html";
+            }
+        </script>
+    </div>
+    </div>
+</body>
+</html>

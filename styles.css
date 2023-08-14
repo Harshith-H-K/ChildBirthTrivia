@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    margin: 0;
+}
+
+.flashcard {
+    width: 90%;
+    /* Use relative units for width to adapt to different screen sizes */
+    max-width: 700px;
+    /* Limit the maximum width to 700px */
+    height: auto;
+    padding: 20px;
+    background-color: #d36161;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    text-align: center;
+}
+
+#question {
+    font-family: Candara;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+#answer {
+    margin-top: 20px;
+    color: #000000;
+    font-family: Candara;
+    font-size: 30px;
+    font-weight: bolder;
+    /*    -moz-transform: scale(-1, -1);
+    -webkit-transform: scale(-1, -1);
+    -o-transform: scale(-1, -1);
+    -ms-transform: scale(-1, -1);
+    transform: scale(-1, -1);*/
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#timer {
+    position: absolute;
+    color: #fff;
+    right: 10px;
+    top: 0px;
+    font-weight: bold;
+    font-family: Candara;
+    font-size: 100px;
+}
+
+.hidden {
+    display: none;
+}
+
+#nextBtn {
+    position: absolute;
+    background-color: #fff;
+    color: rgb(0, 0, 0);
+    right: 10px;
+    bottom: 10px;
+    font-family: Candara;
+    font-size: 25px;
+    font-weight: bold;
+    width: 120px;
+    height: 50px;
+}

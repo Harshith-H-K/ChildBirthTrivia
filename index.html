@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homescreen</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Candara, Arial, sans-serif;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        h1 {
+            color: aquamarine;
+            font-size: 7rem;
+            font-style: italic;
+            text-align: center;
+            animation: color-change 1s infinite
+        }
+        
+        p {
+            position: relative;
+            top: -80px;
+            font-size: 1.5rem;
+            text-align: center;
+            color: aquamarine;
+        }
+        
+        @keyframes color-change {
+            25% {
+                color: yellow;
+            }
+            50% {
+                color: blue;
+            }
+            100% {
+                color: #d36161;
+            }
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: aquamarine;
+            color: #020202;
+            border: none;
+            position: relative;
+            top: -50px;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: color-change 1s infinite;
+            font-family: Candara;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>CHILD BIRTH TRIVIA GAME</h1>
+        <p>Collection of The Alabama Museum of Health and Sciences</p>
+        <button onclick="redirectToInstructions()">Get Started</button>
+    </div>
+
+    <script>
+        function redirectToInstructions() {
+            window.location.href = "instructions.html";
+        }
+    </script>
+    </div>
+</body>
+</html>

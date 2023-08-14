@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Category</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Candara, Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: aquamarine;
+            font-size: 4rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+        }
+        
+        .flashcard-container {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 25px;
+            max-width: 1500px;
+        }
+        
+        .flashcard {
+            flex: 1;
+            padding: 70px;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-right: 20px;
+            /* Add margin between flash cards */
+        }
+        
+        .flashcard.level1 {
+            background-color: #000000;
+            align-items: center;
+            height: 50px;
+            width: 300px;
+            
+        }
+        
+        .flashcard.level1:hover {
+            background-color:green;
+        }
+        
+        .flashcard.level2 {
+            background-color: rgb(0, 0, 0);
+            align-items: center;
+            height: 50px;
+            width: 300px;
+            position: absolute;
+            top: 400px;
+            left: 723px;
+        }
+        
+        .flashcard.level2:hover {
+            background-color: green;
+        }
+     
+        #quitBtn {
+            position: absolute;
+            background-color: #fff;
+            color: rgb(0, 0, 0);
+            left: 10px;
+            top: 10px;
+            font-family: Candara;
+            font-size: 25px;
+            font-weight: bold;
+            width: 120px;
+            height: 50px;
+        }
+        
+        #ph {
+            position: absolute;
+            top: 343px;
+            left: 615px;
+        }
+        
+        #quitBtn:hover {
+            background-color: aquamarine;
+        }
+        #p1{
+            position: absolute;
+            font-size: xx-large;
+            top: 230px;
+            left: 900px;
+        }
+        #p2{
+            position: absolute;
+            font-size: xx-large;
+            top: 50px;
+            left: 170px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <h1>SELECT YOUR LEVEL</h1><br>
+            <div class="flashcard-container">
+                <div class="flashcard level1" onclick="redirectToCardPage('cardGreen1.html')">
+                        <p id="p1">LEVEL I<br>
+                </div>
+                <div class="flashcard level2" onclick="redirectToCardPage('cardGreen2.html')">
+                        <p id="p2">LEVEL II</p>
+                </div>
+            </div>
+        </div>
+        <button id="quitBtn" class="hidden">Back</button>
+        <script>
+            function redirectToCardPage(url) {
+                window.location.href = url;
+            }
+            quitBtn.addEventListener("click", () => {
+                window.location.href = "category.html";
+            });
+        </script>
+    </body>
+</html>
+</body>
+
+</html>

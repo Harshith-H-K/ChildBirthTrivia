@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Category</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Candara, Arial, sans-serif;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: aquamarine;
+            font-size: 4rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+        }
+        
+        .flashcard-container {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 25px;
+            max-width: 1500px;
+        }
+        
+        .flashcard {
+            flex: 1;
+            padding: 70px;
+            height: 150px;
+            width: 100px;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-right: 20px;
+            /* Add margin between flash cards */
+        }
+        
+        .flashcard.pink {
+            background-color: #ff7e7e;
+        }
+        
+        .flashcard.pink:hover {
+            background-color: aquamarine;
+        }
+        
+        .flashcard.blue {
+            background-color: blue;
+            align-items: center;
+        }
+        
+        .flashcard.blue:hover {
+            background-color: aquamarine;
+        }
+        
+        .flashcard.yellow {
+            background-color: yellow;
+        }
+        
+        .flashcard.yellow:hover {
+            background-color: aquamarine;
+        }
+        
+        .flashcard.orange {
+            background-color: orange;
+        }
+        
+        .flashcard.orange:hover {
+            background-color: aquamarine;
+        }
+        
+        .flashcard.green {
+            background-color: green;
+        }
+        
+        .flashcard.green:hover {
+            background-color: aquamarine;
+        }
+        
+        #quitBtn {
+            position: absolute;
+            background-color: #fff;
+            color: rgb(0, 0, 0);
+            left: 10px;
+            top: 10px;
+            font-family: Candara;
+            font-size: 25px;
+            font-weight: bold;
+            width: 120px;
+            height: 50px;
+        }
+        
+        #ph {
+            position: absolute;
+            top: 343px;
+            left: 615px;
+        }
+        
+        #quitBtn:hover {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <h1>SELECT YOUR CATEGORY</h1><br>
+            <div class="flashcard-container">
+                <div class="flashcard pink" onclick="redirectToCardPage('levelsPink.html')">
+                    <center>
+                        <p>ODDS <br>&
+                        <br>ENDS</p>
+                    </center>
+                </div>
+                <div class="flashcard blue" onclick="redirectToCardPage('levelsBlue.html')">
+                    <center>
+                        <p>ANATOMY & <br><span id="ph">PHYSIOLOGY</span></p>
+                    </center>
+                </div>
+                <div class="flashcard yellow" onclick="redirectToCardPage('levelsYellow.html')">
+                    <center>
+                        <p>HISTORY & CURRENT EVENTS</p>
+                    </center>
+                </div>
+                <div class="flashcard orange" onclick="redirectToCardPage('levelsOrange.html')">
+                    <center>
+                        <p>LABOR & DELIVERY</p>
+                    </center>
+                </div>
+                <div class="flashcard green" onclick="redirectToCardPage('levelsGreen.html')">
+                    <center>
+                        <p>SCIENCE & NATURE</p>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <button id="quitBtn" class="hidden">Quit</button>
+        <script>
+            function redirectToCardPage(url) {
+                window.location.href = url;
+            }
+            quitBtn.addEventListener("click", () => {
+                window.location.href = "index.html";
+            });
+        </script>
+    </body>
+
+</html>
+</body>
+
+</html>

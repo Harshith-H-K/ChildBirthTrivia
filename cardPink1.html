@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Card Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+        }
+        
+        .flashcard {
+            width: 90%;
+            /* Use relative units for width to adapt to different screen sizes */
+            max-width: 700px;
+            /* Limit the maximum width to 700px */
+            height: auto;
+            padding: 20px;
+            background-color: #ff7e7e;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        #question {
+            font-family: Candara;
+            font-size: 30px;
+            font-weight: bolder;
+        }
+        
+        #answer {
+            margin-top: 20px;
+            color: #000000;
+            font-family: Candara;
+            font-size: 30px;
+            font-weight: bolder;
+        }
+        
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        #timer {
+            position: absolute;
+            color: aquamarine;
+            right: 10px;
+            top: 0px;
+            font-weight: bold;
+            font-family: Candara;
+            font-size: 100px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        #nextBtn {
+            position: absolute;
+            background-color: #fff;
+            color: rgb(0, 0, 0);
+            right: 10px;
+            bottom: 10px;
+            font-family: Candara;
+            font-size: 25px;
+            font-weight: bold;
+            width: 120px;
+            height: 50px;
+        }
+        
+        #backBtn {
+            position: absolute;
+            background-color: #fff;
+            color: rgb(0, 0, 0);
+            left: 10px;
+            top: 0px;
+            font-family: Candara;
+            font-size: 25px;
+            font-weight: bold;
+            width: 120px;
+            height: 50px;
+        }
+        
+        #nextBtn:hover {
+            background-color: aquamarine;
+        }
+        
+        #backBtn:hover {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="flashcard">
+        <h2></h2>
+        <p id="question"></p>
+        <h2></h2>
+        <p id="answer"></p>
+    </div>
+
+    <div id="timer">8</div>
+    <button id="nextBtn" class="hidden">Next</button>
+    <button id="backBtn" class="hidden">Back</button>
+
+    <script>
+        const flashcards = [{
+            question: "What is the oldest home birth equipment supplier available to home birth parents and midwives ?",
+            answer: "Cascade Birthing Supplies"
+        }, {
+            question: "What U.S. federal program encourages good nutrition and pregnant women and their children ?",
+            answer: "WIC"
+        }, {
+            question: "What is the most common argument between twins in Utero ?",
+            answer: "Who is going first"
+        }, {
+            question: "For what does a VDRL or Wasserman test screen ?",
+            answer: "syphilis"
+        }, {
+            question: "What does the abbreviation CNM describe ?",
+            answer: "Certified Nurse Midwife"
+        }, 
+        {
+            question: "What is the significance of a tightly curled flower to a woman in labor in parts of India ?",
+            answer: "she believes when the flower has opened she will be ready to give birth"
+        }];
+
+        let currentCardIndex = 0;
+        const questionElement = document.getElementById("question");
+        const answerElement = document.getElementById("answer");
+        const nextButton = document.getElementById("nextBtn");
+        const backBtn = document.getElementById("backBtn");
+        const timerElement = document.getElementById("timer");
+        let timerInterval;
+
+        function showQuestion() {
+            questionElement.textContent = flashcards[currentCardIndex].question;
+            answerElement.textContent = flashcards[currentCardIndex].answer;
+            answerElement.classList.add("hidden");
+            nextButton.classList.add("hidden");
+            backBtn.classList.add("hidden");
+        }
+
+        function showAnswerAndStartNextQuestionTimer() {
+            answerElement.classList.remove("hidden");
+            nextButton.classList.remove("hidden");
+            backBtn.classList.remove("hidden");
+            startNextQuestionTimer();
+        }
+
+        function showNextCardAndStartCurrentQuestionTimer() {
+            currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+            showQuestion();
+            startCurrentQuestionTimer();
+        }
+
+        function startCurrentQuestionTimer() {
+            let seconds = 8;
+            timerElement.textContent = seconds;
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                seconds--;
+                timerElement.textContent = seconds;
+                if (seconds === 0) {
+                    clearInterval(timerInterval);
+                    showAnswerAndStartNextQuestionTimer();
+                }
+            }, 1000);
+        }
+
+        function startNextQuestionTimer() {
+            nextButton.removeEventListener("click", showNextCardAndStartCurrentQuestionTimer);
+            if (currentCardIndex === flashcards.length - 1) {
+                nextButton.style.display = "none";
+            } else {
+                nextButton.addEventListener("click", showNextCardAndStartCurrentQuestionTimer);
+            }
+        }
+
+        backBtn.addEventListener("click", () => {
+            window.location.href = "category.html";
+        });
+
+        showQuestion();
+        startCurrentQuestionTimer();
+    </script>
+</body>
+
+</html>
